@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello World!</h1>
+
+  
+  <form action="/users/registration" method="post">
+    <h2>Registration</h2>
+    {% with messages = get_flashed_messages(category_filter=["registration"]) %}
+  {% if messages %}
+    {% for message in messages %}
+      <p>{{message}}</p>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+    <!-- first name -->
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name">
+    <br><br>
+     <!-- last name -->
+     <label for="last_name">Last Name:</label>
+     <input type="text" name="last_name">
+     <br><br>
+      <!-- email -->
+      <label for="email">Email:</label>
+      <input type="text" name="email">
+      <br><br>
+
+      <!-- password -->
+      <label for="password">Password:</label>
+      <input type="password" name="password">
+      <br><br>
+
+       <!-- password -->
+       <label for="password_confirmation">Confirm Password:</label>
+       <input type="password" name="password_confirmation">
+       <br><br>
+
+    <button>Register</button>
+  </form>
+
+  <form action="/users/login" method="post">
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages(category_filter=["login"]) %}
+  {% if messages %}
+    {% for message in messages %}
+      <p>{{message}}</p>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+    
+    <label for="email">Email</label>
+    <input type="text" name="email">
+
+    <br><br>
+    <label for="password">Password</label>
+    <input type="password" name="password">
+    <br><br>
+    <button>Login</button>
+  </form>
+
+</body>
+</html>

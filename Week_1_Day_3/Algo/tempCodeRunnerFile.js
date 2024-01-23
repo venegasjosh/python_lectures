@@ -1,0 +1,1 @@
+numStr += str[i];
