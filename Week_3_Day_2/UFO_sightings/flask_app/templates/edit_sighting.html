@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Edit Sighting!</h1>
+  <a href="/sightings">Back to sightings</a>
+  <br>
+  <a href="/logout">Logout</a>
+<hr>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  {% for message in messages %}
+    <p>{{message}}</p>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+  <form action="/sightings/update" method="post">
+    <label for="title">Title:</label>
+    <input type="hidden" name="id" value="{{sighting.id}}">
+    <input type="text" name="title" value="{{sighting.title}}">
+    <br><br>
+    <label for="description">Description:</label>
+
+    <textarea  type="text" name="description" >
+      {{sighting.description}}
+    </textarea>
+    
+    <br><br>
+    <label for="location">Location:</label>
+    <input type="text" name="location" value="{{sighting.location}}">
+    <br><br>
+
+    <label for="date_seen">Date of Sighting:</label>
+    <input type="date" name="date_seen" value="{{sighting.date_seen}}">
+
+    <br><br>
+    <fieldset>
+
+      <legend>Were you abducted?</legend>
+
+
+
+    <label for="yes">Yes</label>
+    <input type="radio" name="abducted" value="yes"
+      {% if 'yes' in sighting.abducted %}
+        checked
+      {% endif %}
+      >
+
+    <label for="no">No</label>
+    <input type="radio" name="abducted" value="no" 
+    
+     {% if 'no' in sighting.abducted %}
+        checked
+      {% endif %}
+    
+    >
+    
+
+
+  </fieldset>
+    <br><br>
+    <button>Submit</button>
+</form>
+
+</body>
+</html>

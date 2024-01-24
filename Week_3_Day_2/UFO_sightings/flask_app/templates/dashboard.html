@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello, welcome to your Dashboard, {{current_user.first_name}}!</h1>
+  <a href="/sightings/new">+ Create</a>
+  <a href="/logout">Logout</a>
+  <br><br>
+  <h2>All posted sightings:</h2>
+
+
+  <br>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <td>
+          Title
+        </td>
+        <td>
+          Abducted?
+        </td>
+        <td>
+          Posted By
+        </td>
+        <td>
+          Actions
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+        {% for sighting in sightings %}
+          
+        
+        <tr>
+          <td>
+            {{sighting.title}}
+          </td>
+          <td>
+            {{sighting.abducted}}
+          </td>
+          <td>
+            {{sighting.creator.first_name}}
+          </td>
+          <td>
+            <a href="/sightings/{{sighting.id}}">View Sighting</a> 
+            
+            {% if session['user_id'] == sighting.user_id %}
+            | <a href="/sightings/edit/{{sighting.id}}">Edit</a> 
+            
+            | <a href="/sightings/delete/{{sighting.id}}">Delete</a>
+              
+            {% endif %}
+
+            
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>

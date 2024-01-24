@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+
+  
+</head>
+<body>
+  <h1>Hello {{current_user.first_name}}</h1>
+  <a href="/sightings">Back to sightings</a>
+  <br>
+  <a href="/logout">Logout</a>
+
+<h2>{{sighting.title}}</h2>
+
+<p>Description: {{sighting.description}}</p>
+
+<p>location: {{sighting.location}}</p>
+
+<p>date seen: {{sighting.date_seen}}</p>
+
+<p>abducted? {{sighting.abducted}}</p>
+</body>
+</html>
